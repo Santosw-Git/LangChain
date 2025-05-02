@@ -1,7 +1,9 @@
 import random
 from promptemplate import PromptTemplate
 from chain_Method import Chain
-class LLM:
+from runnables import Runnable
+from RunnableConnector import RunnableConnector
+class LLM(Runnable):
     def __init__(self):
         print("The llm is created")
 
@@ -27,7 +29,9 @@ template = PromptTemplate(
     
 )
 
-chain = Chain(llm, template)
+# chain = Chain(llm, template)
+
+chain = RunnableConnector([template, llm])
 
 result = chain.invoke({'topic':'black hole'})
 print(result)

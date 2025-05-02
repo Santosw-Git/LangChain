@@ -1,4 +1,5 @@
-class PromptTemplate:
+from runnables import Runnable
+class PromptTemplate(Runnable):
     def __init__(self, template, input_variables):
         self.template = template
         self.input_variables = input_variables
