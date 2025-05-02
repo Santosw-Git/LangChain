@@ -3,6 +3,7 @@ from promptemplate import PromptTemplate
 from chain_Method import Chain
 from runnables import Runnable
 from RunnableConnector import RunnableConnector
+from strOutputPraser import strOutputParser
 class LLM(Runnable):
     def __init__(self):
         print("The llm is created")
@@ -29,9 +30,11 @@ template = PromptTemplate(
     
 )
 
+parser = strOutputParser()
+
 # chain = Chain(llm, template)
 
-chain = RunnableConnector([template, llm])
+chain = RunnableConnector([template, llm,parser])
 
 result = chain.invoke({'topic':'black hole'})
 print(result)
